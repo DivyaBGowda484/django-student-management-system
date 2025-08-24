@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}!</h2>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Joined:</strong> {{ user.date_joined }}</p>
+
+{% if user.student %}
+  <h3>Your Courses:</h3>
+  <ul>
+    {% for course in user.student.courses.all %}
+      <li>{{ course.name }} ({{ course.code }})</li>
+    {% empty %}
+      <li>You are not enrolled in any course.</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+<a href="{% url 'logout' %}">Logout</a>
+{% endblock %}

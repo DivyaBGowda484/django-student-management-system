@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+{% block title %}Student Details{% endblock %}
+
+{% block content %}
+<h2>Student: {{ student.user.username }}</h2>
+<p><strong>Roll No:</strong> {{ student.roll_no }}</p>
+<p><strong>Email:</strong> {{ student.user.email }}</p>
+<p><strong>Courses:</strong></p>
+<ul>
+  {% for course in student.courses.all %}
+    <li>{{ course.name }}</li>
+  {% empty %}
+    <li>No courses enrolled.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'student_list' %}">Back to Student List</a>
+{% endblock %}

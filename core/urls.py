@@ -13,4 +13,10 @@ urlpatterns = [
     path("courses/<int:pk>/", views.course_detail, name="course_detail"),
     path("courses/<int:pk>/edit/", views.course_update, name="course_update"),
     path("courses/<int:pk>/delete/", views.course_delete, name="course_delete"),
+
+    path("enrollments/", views.enrollment_list, name="enrollment_list"),
+    path("enrollments/<int:pk>/", views.enrollment_detail, name="enrollment_detail"),
+    path("enrollments/create/", views.enrollment_create, name="enrollment_create"),
+    path("enrollments/<int:pk>/update/", views.enrollment_update, name="enrollment_update"),
+    path("enrollments/<int:pk>/delete/", views.enrollment_delete, name="enrollment_delete"),
 ]

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.mdels import User
+from django.contrib.auth.models import User
 
 class Course(models.Model):
     name = models.CharField(max_length=100)
@@ -14,11 +14,11 @@ class Student(models.Model):
     courses = models.ManyToManyField(Course, through="Enrollment")
 
     def __str__(self):
-        return f'{self.user.username} - self.roll_no'
+        return f'{self.user.username} - {self.roll_no}'
     
 class Enrollment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    courses = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     date_enrolled = models.DateField(auto_now_add=True)
 
     def __str__(self):
